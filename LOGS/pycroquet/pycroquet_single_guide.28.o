@@ -1,0 +1,78 @@
+INFO: Number of duplicate guides: 26
+INFO: Total unique guides: 101064
+INFO: Sequence input detected as *.cram
+INFO: Parsed 61476129 reads, 1303703 were unique...
+INFO: Read parsing took: 381s
+INFO: 8 CPUs processed 400000 reads in 1s (wall)
+INFO: 8 CPUs processed 400000 reads in 2s (wall)
+INFO: 8 CPUs processed 400000 reads in 2s (wall)
+INFO: 8 CPUs processed 103703 reads in 1s (wall)
+INFO: Collating data from /tmp/tmpvqsoo8x0/pre_matrix_00001.pickled.gz
+INFO: Collating data from /tmp/tmpvqsoo8x0/pre_matrix_00002.pickled.gz
+INFO: Collating data from /tmp/tmpvqsoo8x0/pre_matrix_00003.pickled.gz
+INFO: Collating data from /tmp/tmpvqsoo8x0/pre_matrix_00004.pickled.gz
+INFO: Mapped: 53699241, Multimap: 0 , Unmapped: 7776888
+INFO: Writing counts file: /lustre/scratch124/casm/team113/projects/5621_5821_sgrna_crisprko_uveal_melanoma/DATA/pycroquet/5821_5821STDY10407978.counts.tsv.gz
+INFO: Writing statistics file: /lustre/scratch124/casm/team113/projects/5621_5821_sgrna_crisprko_uveal_melanoma/DATA/pycroquet/5821_5821STDY10407978.stats.json
+INFO: Writing alignment file: /tmp/tmpvqsoo8x0/temp.bam (intermediate)
+INFO: Sorting alignments to: /lustre/scratch124/casm/team113/projects/5621_5821_sgrna_crisprko_uveal_melanoma/DATA/pycroquet/5821_5821STDY10407978.cram
+INFO: Generating alignment index: /lustre/scratch124/casm/team113/projects/5621_5821_sgrna_crisprko_uveal_melanoma/DATA/pycroquet/5821_5821STDY10407978.cram.crai
+
+------------------------------------------------------------
+Sender: LSF System <lsfadmin@node-13-14>
+Subject: Job 13129323[28]: <pycroquet[1-33]> in cluster <farm5> Done
+
+Job <pycroquet[1-33]> was submitted from host <farm5-head2> by user <vo1> in cluster <farm5> at Wed Feb  8 12:13:55 2023
+Job was executed on host(s) <8*node-13-14>, in queue <normal>, as user <vo1> in cluster <farm5> at Wed Feb  8 12:13:57 2023
+</nfs/users/nfs_v/vo1> was used as the home directory.
+</lustre/scratch124/casm/team113/projects/5621_5821_sgrna_crisprko_uveal_melanoma> was used as the working directory.
+Started at Wed Feb  8 12:13:57 2023
+Terminated at Wed Feb  8 12:36:51 2023
+Results reported at Wed Feb  8 12:36:51 2023
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+#BSUB -q normal
+#BSUB -J pycroquet[1-33]
+#BSUB -oo "/lustre/scratch124/casm/team113/projects/5621_5821_sgrna_crisprko_uveal_melanoma/LOGS/pycroquet/pycroquet_single_guide.%I.o"
+#BSUB -eo "/lustre/scratch124/casm/team113/projects/5621_5821_sgrna_crisprko_uveal_melanoma/LOGS/pycroquet/pycroquet_single_guide.%I.e"
+#BSUB -R "select[mem>10000] rusage[mem=10000] span[hosts=1]"
+#BSUB -M 10000
+#BSUB -n 8
+module load pycroquet/1.5.1
+guides="/lustre/scratch124/casm/team113/projects/5621_5821_sgrna_crisprko_uveal_melanoma/METADATA/library_CRISPRcleanR_KY_Library_v1.1.pycroquet.tsv"
+cram_directory="/lustre/scratch124/casm/team113/projects/5621_5821_sgrna_crisprko_uveal_melanoma/DATA/CRAM/study_sample"
+cram_files=($(ls ${cram_directory}/*.cram))
+array_index=$(expr ${LSB_JOBINDEX} - 1)
+query_file_name=$(basename ${cram_files[${array_index}]})
+query_file_label=${query_file_name::-5}
+output_directory="/lustre/scratch124/casm/team113/projects/5621_5821_sgrna_crisprko_uveal_melanoma/DATA/pycroquet"
+pycroquet single-guide -g ${guides} -q ${cram_directory}/${query_file_name} -o ${output_directory}/${query_file_label} --cpus 8 --boundary-mode exact --chunks 50000
+
+------------------------------------------------------------
+
+Successfully completed.
+
+Resource usage summary:
+
+    CPU time :                                   1487.76 sec.
+    Max Memory :                                 4552 MB
+    Average Memory :                             789.56 MB
+    Total Requested Memory :                     10000.00 MB
+    Delta Memory :                               5448.00 MB
+    Max Swap :                                   -
+    Max Processes :                              6
+    Max Threads :                                22
+    Run time :                                   1373 sec.
+    Turnaround time :                            1376 sec.
+
+The output (if any) is above this job summary.
+
+
+
+PS:
+
+Read file </lustre/scratch124/casm/team113/projects/5621_5821_sgrna_crisprko_uveal_melanoma/LOGS/pycroquet/pycroquet_single_guide.28.e> for stderr output of this job.
+
