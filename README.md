@@ -1,3 +1,5 @@
+[![DOI](https://zenodo.org/badge/934196809.svg)](https://doi.org/10.5281/zenodo.14988332)
+
 ## Summary
 CRISPRko screens were performed in 10 uveal melanoma cell lines expressing Cas9 (3 replicates) using the Human CRISPR Library (Yusa v1.1). Samples at day 14 of screen were quantified along with a previous sequencing run of the pooled plasmids which were used to generate the library.
 
